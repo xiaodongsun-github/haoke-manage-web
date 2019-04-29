@@ -68,6 +68,8 @@ class AddResource extends PureComponent {
 
         //楼盘id
         values.estateId = this.state.estateId;
+        //处理图片
+        values.pic = [...this.state.pics].join(',');
 
         dispatch({
           type: 'house/submitHouseForm',
@@ -92,9 +94,16 @@ class AddResource extends PureComponent {
   };
 
   handleFileList = (obj) => {
-    console.log(obj, "图片列表");
+    let pics = new Set();
+    obj.forEach((v, k) => {
+      if (v.response) {
+        pics.add(v.response.name);
+      }
+    });
+    this.setState({
+      pics: pics
+    });
   }
-
 
   constructor(props) {
     super(props);
