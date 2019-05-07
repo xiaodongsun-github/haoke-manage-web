@@ -1,11 +1,30 @@
 import { Upload, Icon, Modal } from 'antd';
 
 class PicturesWall extends React.Component {
-    state = {
+
+    constructor(props){
+      super(props);
+
+      //  处理默认图片
+      let fileList = [];
+      if(this.props.fileList){
+        fileList = this.props.fileList.split(',').map(item => {
+            return {
+              uid: item,
+              name: item,
+              status: 'done',
+              url: item,
+            }
+        });
+      }
+
+
+      this.state = {
         previewVisible: false,
         previewImage: '',
-        fileList: [],
-    };
+        fileList: fileList
+      };
+    }
 
     handleCancel = () => this.setState({ previewVisible: false })
 

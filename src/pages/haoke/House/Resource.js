@@ -17,6 +17,7 @@ import PageHeaderWrapper from '@/components/PageHeaderWrapper';
 
 import styles from '../TableList.less';
 import ShowPics from "./ShowPics";
+import EditResource from './EditResource';
 
 const FormItem = Form.Item;
 const { Option } = Select;
@@ -99,6 +100,8 @@ class Resource extends PureComponent {
       render: (text, record) => (
         <Fragment>
           <a onClick={() => this.handleUpdateModalVisible(true, record)}>查看</a>
+          <Divider type="vertical" />
+          <EditResource record={record}/>
           <Divider type="vertical" />
           <a href="">删除</a>
         </Fragment>
