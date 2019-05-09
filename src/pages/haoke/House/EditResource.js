@@ -53,7 +53,7 @@ class EditResource extends React.Component {
                     values.pic = [...this.state.pics].join(',');
                 }
                 values.id = record.id;
-
+                console.log(values);
                 dispatch({
                     type: 'house/updateHouseForm',
                     payload: values,
@@ -87,7 +87,6 @@ class EditResource extends React.Component {
     render() {
 
         const record = this.props.record;
-        console.log(record.pic);
         const {
             form: { getFieldDecorator }
         } = this.props;

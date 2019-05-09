@@ -101,13 +101,21 @@ class Resource extends PureComponent {
         <Fragment>
           <a onClick={() => this.handleUpdateModalVisible(true, record)}>查看</a>
           <Divider type="vertical" />
-          <EditResource record={record}/>
+          <EditResource record={record} reload = {this.reload.bind(this)}/>
           <Divider type="vertical" />
           <a href="">删除</a>
         </Fragment>
       ),
     },
   ];
+
+  reload(){
+    const { dispatch } = this.props;
+    dispatch({
+      type: 'houseResource/fetch',
+      // type: 'rule/fetch',
+    });
+  }
 
   componentDidMount() { //当组件挂载完成后执行加载数据
     console.log("loading.......");
